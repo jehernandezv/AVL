@@ -35,21 +35,19 @@ public class Node {
 	}
 	
 	public int calculateBalance(){
-		return this.valueHeigthLeft() - this.valueHeigthRigh();
+		return this.valueHeigth(this.left) - this.valueHeigth(this.right);
 	}
 	
-	public int valueHeigthLeft(){
+	
+	public int valueHeigth(Node node){
 		int value = 0;
-		Node actual = this;
-		if(actual.getLeft() != null){
-			actual = actual.getLeft();
-			
+		Node actual = node;
+		
 			while(actual != null){
 				if(actual.getLeft() != null && actual.getRight() != null){ //tiene 2 hijos
 					value ++;
 					if(actual.getLeft() != null && actual.getRight() == null){
 						actual = actual.getLeft();
-						
 					} else{
 						actual = actual.getRight();
 	
@@ -63,42 +61,30 @@ public class Node {
 					actual = actual.getRight();
 				}
 			}	
-		}
+		
 		actual = null;
 	  
 		return value;
 	}
 	
-	public int valueHeigthRigh(){
-		int value = 0;
-		Node actual = this;
-		if(actual.getRight() != null){
-			actual = actual.getRight();
-			
-			while(actual != null){
-				if(actual.getLeft() != null && actual.getRight() != null){ //tiene 2 hijos
-					value ++;
-					if(actual.getLeft() != null && actual.getRight() == null){
-						actual = actual.getLeft();
-						
-					} else{
-						actual = actual.getRight();
 	
-					}
-					
-				}else if(actual.getLeft() != null && actual.getRight() == null){
-					value ++;
-					actual = actual.getLeft();
-				}else {
-					value ++;
-					actual = actual.getRight();
-				}
-			}	
-		}
-		actual = null;
-	  
-		return value;
-	}
+//	public int heigth(){
+//		int value = 0;
+//		if(this.left != null || this.right != null){
+//			int valueLeft = (this.left != null)? this.left.heigth() : 0;
+//			int valueRigth = (this.right != null)? this.right.heigth() : 0;
+//			value = 1 + ((valueLeft <= valueRigth) ? valueRigth : valueLeft);
+//		}
+//		return value;
+//	}
+//	
+//	public int factorBalance(){
+//		int value = 0;
+//		if(this.left != null && this.right != null){
+//			value = this.left.heigth() - this.right.heigth();
+//		}
+//		return value;
+//	}
 	
 //	public int valueHeigthLeft(){
 //		int value = 0;
